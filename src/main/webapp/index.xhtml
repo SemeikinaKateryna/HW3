@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Books</title>
+    </h:head>
+    <h:body>
+        <h1>Enter your book :</h1>
+    <h:form>
+        <h:panelGrid columns="2">
+            <p:outputLabel value="Title"/>
+            <p:inputText value="#{bookBean.bookDto.title}"/>
+            <p:outputLabel value="Author"/>
+            <p:inputText value="#{bookBean.bookDto.author}"/>
+            <p:outputLabel value="Number of pages"/>
+            <p:spinner value="#{bookBean.bookDto.number_of_pages}"/>
+            <p:commandButton value="Add" action="#{bookBean.add()}"/>
+        </h:panelGrid>
+    </h:form>
+        <h:form>
+        <p:dataTable value="#{bookBean.books}" var="b" id="table">
+            <p:column headerText="Id">
+                <h:outputText value="#{b.id}"/>
+            </p:column>
+            <p:column headerText="Title">
+                <h:outputText value="#{b.title}"/>
+            </p:column>
+            <p:column headerText="Author">
+                <h:outputText value="#{b.author}"/>
+            </p:column>
+            <p:column headerText="Number of pages">
+                <h:outputText value="#{b.numberOfPages}"/>
+            </p:column>
+            <p:column headerText="Delete">
+                <h:commandButton value="Delete" action="#{bookBean.delete(b.id)}"/>
+            </p:column>
+        </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

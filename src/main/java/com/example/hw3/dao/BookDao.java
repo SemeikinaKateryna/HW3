@@ -21,10 +21,19 @@ public class BookDao {
     }
 
     public void deleteById(int id) {
-        Optional<Book> book = Optional.ofNullable(em.find(Book.class, id));
-        if(book.isPresent()) {
-            em.remove(book.get());
-        }
+        Optional<Book> book = Optional.ofNullable(findById(id));
+        book.ifPresent(value -> em.remove(value));
+    }
 
+    public Book findById(int id) {
+        return em.find(Book.class, id);
+    }
+
+    public void update(Book editedBook) {
+        Book book = findById(editedBook.getId());
+        book.setTitle(editedBook.getTitle());
+        book.setAuthor(editedBook.getAuthor());
+        book.setNumberOfPages(editedBook.getNumberOfPages());
+        em.merge(book);
     }
 }

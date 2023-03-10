@@ -42,4 +42,16 @@ public class BookBean implements Serializable {
         bookDao.deleteById(id);
         bookDto = new BookDto();
     }
+
+    public String update(int id) {
+        bookDto = bookConventor.BookToBookDto(bookDao.findById(id));
+        return "updatebook";
+    }
+
+    public String finishUpdate() {
+        Book book = bookConventor.BookDtoToBook(bookDto);
+        bookDao.update(book);
+        bookDto = new BookDto();
+        return "index";
+    }
 }

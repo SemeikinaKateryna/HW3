@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">>
+
+<h:head>
+    <title>Update book</title>
+</h:head>
+<h:body>
+    <h1>Update book :</h1>
+    <h:form>
+        <h:panelGrid columns="2">
+            <p:outputLabel value="Title"/>
+            <p:inputText value="#{bookBean.bookDto.title}"/>
+            <p:outputLabel value="Author"/>
+            <p:inputText value="#{bookBean.bookDto.author}"/>
+            <p:outputLabel value="Number of pages"/>
+            <p:spinner value="#{bookBean.bookDto.number_of_pages}"/>
+            <p:commandButton value="Update" action="#{bookBean.finishUpdate()}"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

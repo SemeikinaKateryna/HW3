@@ -36,8 +36,11 @@
             <p:column headerText="Number of pages">
                 <h:outputText value="#{b.numberOfPages}"/>
             </p:column>
-            <p:column headerText="Delete">
+            <p:column>
                 <h:commandButton value="Delete" action="#{bookBean.delete(b.id)}"/>
+            </p:column>
+            <p:column>
+                <h:commandButton value="Update" action="#{bookBean.update(b.id)}"/>
             </p:column>
         </p:dataTable>
         </h:form>
